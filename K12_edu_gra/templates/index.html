@@ -1,0 +1,229 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>国内K12教育情况数据分析平台</title>
+<!--设置是否为缩放模式 -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- 新 Bootstrap 核心 CSS 文件 --> 
+<link rel="stylesheet" type="text/css" href="https://apps.bdimg.com/libs/bootstrap/3.3.4/css/bootstrap.css">
+<!-- jQuery文件。务必在bootstrap.min.js 之前引入 --> 
+<script src="/static/js/jquery.min.js"></script>
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="/static/js/bootstrap.min.js"></script>
+<!--echarts JS-->
+<script src="/static/js/echarts.min.js"></script>
+<!-- 轮播swiper文件 -->
+<link rel="stylesheet" type="text/css" href="/static/css/swiper.min.css">
+<script src="/static/js/swiper.min.js"></script>
+<!--界面样式-->
+<script src="/static/js/visual.js"></script>
+<script src="/static/js/china.js"></script>
+<script src="/static/js/chartMap.js"></script>
+<script src="/static/js/tagcanvas.min.js"></script>
+<link rel="stylesheet" type="text/css" href="/static/css/visual.css">
+<script src="/static/K12_edu/get_xdf_type.js"></script>
+<script src="/static/K12_edu/get_all.js"></script>
+<script src="/static/K12_edu/course_grade.js"></script>
+<script src="/static/K12_edu/get_name.js"></script>
+<script src="/static/K12_edu/get_grade_count.js"></script>
+<script src="/static/K12_edu/get_material_count.js"></script>
+<script src="/static/K12_edu/get_grade_price.js"></script>
+<script src="/static/K12_edu/get_jh_edition.js"></script>
+
+</head>
+<body class="ksh" style="height:1400px">
+	<div id="load">
+		<div class="load_img"><!-- 加载动画 -->
+			<img class="jzxz1" src="/static/images/jzxz1.png">
+			<img class="jzxz2" src="/static/images/jzxz2.png">
+		</div>
+	</div>
+	<div class="head_top" style="height:33px">
+        <h1 style="color:#F0F8FF;text-align:center;font-size:47px;font-weight:bold;font-family:宋体">
+            国内K12教育情况数据分析平台</h1>
+	</div>
+	<div class="visual">
+		<div class="visual_left"  style="width:450px">
+			<div class="visual_box" style="height:300px">
+				<div class="visual_title">
+					<span>课本类型</span>
+					<img src="/static/images/ksh33.png">
+				</div>
+                <div class="visual_chart" id="chart_1">
+				</div>
+			</div>
+			<div class="visual_box" style="height:600px">
+				<div class="visual_title">
+					<span>上课方式</span>
+					<img src="/static/images/ksh33.png">
+				</div>
+				<div class="visual_chart" id="chart_2">
+				</div>
+			</div>
+
+			<div class="visual_box">
+				<div class="visual_title">
+					<span>年级费用</span>
+					<img src="/static/images/ksh33.png">
+				</div>
+                <div class="visual_chart" id="chart_4"></div>
+			</div>
+
+		</div>
+		<div class="visual_con">
+			<div class="visual_conTop">
+				<div class="visual_conTop_box visual_conTop1">
+					<div>
+						<h3>当前最受重视课程</h3>
+						<p>English</p>
+					</div>
+				</div>
+				<div class="visual_conTop_box visual_conTop2" >
+					<div>
+						<h3>当前课程数</h3>
+						<p> 2591</p>
+						<div class="conTop_smil">
+                            <a class="sz">年级:<span>9</span><i class="fa fa-long-arrow-up"></i></a>
+							<a class="xd">课程:<span>11</span><i class="fa fa-long-arrow-down"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="visual_conTop_box visual_conTop1" >
+					<div>
+						<h3>当前课时平均单价</h3>
+						<p> 95.97</p>
+						<div class="conTop_smil">
+                            <a class="sz"><span  style="float:left; padding-left:30px; display:block"><br>￥</span>
+                                <i class="fa fa-long-arrow-up"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="visual_conTop_box visual_conTop2" >
+					<div>
+						<h3>当前消费教育总费用</h3>
+						<p> 304,854.21‬</p>
+						<div class="conTop_smil">
+							<a class="sz"><span  style="float:left; padding-left:90px; display:block"><br>￥</span>
+                                <i class="fa fa-long-arrow-up"></i></a>
+						</div>
+					</div>
+				</div>
+				<div class="clear"></div>
+			</div>
+			<div class="visual_conBot" style="height:740px">
+				<img class="visual_conBot_l" src="/static/images/ksh42.png">
+				<img class="visual_conBot_2" src="/static/images/ksh43.png">
+				<img class="visual_conBot_3" src="/static/images/ksh44.png" style="left:870px; top:710px;">
+				<img class="visual_conBot_4" src="/static/images/ksh45.png" style="top:710px;">
+				<div class="visual_chart_text">
+					<h1>K12教育+大数据</h1>
+					<h2>国内K12教育大数据分析平台</h2>
+				</div>
+				<div class="visual_chart" id="main8"></div>
+			</div>
+            <div class="visual_box">
+                <div class="visual_left" style="width: 430px;height:380px;">
+                    <div class="visual_title">
+                        <span>课程</span>
+                        <img src="/static/images/ksh33.png">
+                    </div>
+                    <div class="visual_chart" id="chart_5">
+                        <canvas height="350" width="420" id="cloudCanvas"></canvas>
+                    </div>
+                    <div id="tags2">
+                        <ul id="regBusiness">
+                        <li></li>
+                        </ul>
+                    </div>
+				</div>
+
+                <div class="visual_right" style="width: 430px">
+                    <div class="visual_title">
+                        <span>高、初、小教育阶段</span>
+                        <img src="/static/images/ksh33.png">
+                    </div>
+                    <div class="visual_chart" id="chart_6"></div>
+                </div>
+            </div>
+        </div>
+		<div class="visual_right">
+			<div class="visual_box" style="height:430px">
+				<div class="visual_title">
+					<span>课程价格和数量</span>
+					<img src="/static/images/ksh33.png">
+				</div>
+                <div class="visual_chart" id="chart_3"></div>
+{#				<div class="swiper-container visual_swiper1 visual_chart">#}
+{#					<div class="swiper-wrapper">#}
+{#						<div class="swiper-slide"  id="main3"></div>#}
+{#						<div class="swiper-slide"  id="main31"></div>#}
+{#					</div>#}
+{#				</div>#}
+			</div>
+			<div class="visual_box" style="height:460px">
+				<div class="visual_title">
+					<span>年级与课程</span>
+					<img src="/static/images/ksh33.png">
+				</div>
+				<div class="visual_chart" id="chart_9"></div>
+			</div>
+			<div class="visual_box">
+				<div class="visual_title">
+					<span>学习资料</span>
+					<img src="/static/images/ksh33.png">
+				</div>
+                <div class="visual_chart"  id="chart_7"></div>
+{#				<div class="swiper-container visual_swiper2 visual_chart">#}
+{#					<div class="swiper-wrapper">#}
+{#						<div class="swiper-slide"  id="main4"></div>#}
+{#						<div class="swiper-slide"  id="main41"></div>#}
+{#					</div>#}
+{#				</div>#}
+			</div>
+		</div>
+		<div class="clear"></div>
+	</div>
+	<script type="text/javascript">
+		$(function(){
+			var a=$('.visualSssf_left a')
+			for(var i=0;i<a.length;i++){
+				a[i].index=i;
+				a[i].onclick=function(){
+					for(var i=0;i<a.length;i++){
+						a[i].className=''
+						}
+					this.className='active'
+				}
+			}
+
+			var sfzcllH=$('.sfzcll_box').height()
+			var sfzcllHtwo=sfzcllH-2
+			$('.sfzcll_box').css('line-height',sfzcllH+'px')
+			$('.sfzcll_smallBk>div').css('line-height',sfzcllHtwo+'px')
+
+			//删除加载动画
+			$('#load').fadeOut(1000)
+    		setTimeout(function(){    
+    			$('#load').remove()
+    		}
+    		,1100);
+		})
+    {#//收费站收费排行#}
+	{#var myChart4 = echarts.init(document.getElementById('main4'));#}
+    {#myChart4.setOption(option4);#}
+    {#var myChart41 = echarts.init(document.getElementById('main41'));#}
+    {#myChart41.setOption(option41);#}
+    {#var mySwiper2 = new Swiper('.visual_swiper2', {#}
+	{#	autoplay: true,//可选选项，自动滑动#}
+	{#	direction : 'vertical',//可选选项，滑动方向#}
+	{#	speed:2000,//可选选项，滑动速度#}
+    //中间地图
+	var myChart8 = echarts.init(document.getElementById('main8'));
+    myChart8.setOption(option8);
+    //收费站收费量
+	var myChart9 = echarts.init(document.getElementById('chart_9'));
+    myChart9.setOption(option_9);
+	</script>
+</body>
+</html>
